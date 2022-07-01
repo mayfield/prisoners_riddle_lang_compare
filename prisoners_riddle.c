@@ -13,7 +13,6 @@ void shuffle(int* arr, int len) {
     }
     for (int i = 0; i < len; i++) {
         int to = rand() % len;
-        printf("%d\n", to);
         int a = arr[to];
         int b = arr[i];
         arr[i] = a;

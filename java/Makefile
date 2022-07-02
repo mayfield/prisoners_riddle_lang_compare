@@ -1,3 +1,4 @@
 run:
 	javac -Werror PrisonersRiddle.java
-	time java PrisonersRiddle 1000
+	time -v java PrisonersRiddle 1000
+	time -v java PrisonersRiddle 1000 --vector

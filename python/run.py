@@ -1,12 +1,13 @@
+import pr
 import sys
 import random
+import array
 
 p = int(sys.argv[1])
-boxes = [i for i in range(p)]
-max_attempts = p / 2 - 1
+accel = '--accel' in sys.argv
 
 
-def shuffle(arr):
+def _shuffle(arr):
     l = len(arr)
     for i in range(l):
         to = int(random.random() * l)
@@ -16,7 +17,8 @@ def shuffle(arr):
         arr[i] = b
 
 
-def run():
+max_attempts = p / 2 - 1
+def _run(boxes):
     shuffle(boxes)
     for n in range(p):
         b = boxes[n]
@@ -26,13 +28,23 @@ def run():
             attempts += 1
         if b != n:
             return 0
-        n += 1
     return 1
+
+
+if accel:
+    shuffle = pr.shuffle
+    run = pr.run
+else:
+    shuffle = _shuffle
+    run = _run
 
 live_sum = 0
 iters = 0
+#boxes = [i for i in range(p)]
+boxes = array.array('I', [i for i in range(p)])
+tc = boxes.typecode
 for i in range(10000):
-    live = run()
+    live = run(boxes, tc)
     live_sum += live
     iters += 1
     if not iters % 1000:

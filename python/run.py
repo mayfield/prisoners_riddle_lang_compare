@@ -1,7 +1,10 @@
-import pr
 import sys
 import random
 import array
+try:
+    import pr
+except ImportError:
+    pass
 
 p = int(sys.argv[1])
 accel = '--accel' in sys.argv
@@ -18,7 +21,7 @@ def _shuffle(arr):
 
 
 max_attempts = p / 2 - 1
-def _run(boxes):
+def _run(boxes, *na):
     shuffle(boxes)
     for n in range(p):
         b = boxes[n]

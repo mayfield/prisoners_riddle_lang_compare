@@ -13,3 +13,8 @@ performance
 | Java (int[])     | 1.22  | 39664  |
 | Rust             | 1.15  | 1948   |
 | C                | 1.15  | 1584   |
+
+
+[](timechart.png)
+
+[](memchart.png)

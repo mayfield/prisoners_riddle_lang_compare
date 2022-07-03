@@ -15,6 +15,5 @@ performance
 | C                | 1.15  | 1584   |
 
 
-[](timechart.png)
-
-[](memchart.png)
+<img src="timechart.png" width="600"/>
+<img src="memchart.png" width="600"/>

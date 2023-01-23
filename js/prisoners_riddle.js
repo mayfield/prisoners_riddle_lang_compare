@@ -7,9 +7,37 @@ for (let i = 0; i < p; i++) {
     boxes[i] = i;
 }
 
+
+class FastRandom {
+    constructor() {
+        this._seed = (Math.random() * 0x7fffffff) >>> 0;
+    }
+
+    next() {
+        return this._seed = this._seed * 16807 % 0x7fffffff;
+        //return this._seed = (this._seed * 16807) & 0x7fffffff;
+    }
+
+    nextFloat() {
+        return (this.next() - 1) / 0x7fffffff
+    }
+}
+
+const fastRandom = new FastRandom();
+
+let _seed = (Math.random() * 0x7fffffff) >>> 0;
+function next() {
+    _seed = (_seed * 16807) >>> 0;
+    //return this._seed = (this._seed * 16807) & 0x7fffffff;
+    return _seed;
+}
+
+
 function shuffle(arr) {
     for (let i = 0; i < arr.length; i++) {
-        const to = (Math.random() * arr.length) >>> 0;
+        //const to = fastRandom.next() % arr.length;
+        const to = next() % arr.length;
+        //const to = (Math.random() * arr.length) >>> 0;
         [arr[to], arr[i]] = [arr[i], arr[to]];
     }
 }

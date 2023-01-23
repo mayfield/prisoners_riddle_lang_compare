@@ -1,2 +1,4 @@
-all:
-	time -v node ./prisoners_riddle.js 1000
+build:
+
+run:
+	time -v node ./prisoners_riddle.js 3000

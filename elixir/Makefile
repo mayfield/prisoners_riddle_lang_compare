@@ -1,3 +1,4 @@
-all:
-	time -v elixir ./prisoners_riddle.exs 
+build:
 
+run:
+	time -v elixir ./prisoners_riddle.exs

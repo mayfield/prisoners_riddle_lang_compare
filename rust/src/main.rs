@@ -29,10 +29,11 @@ fn run(boxes: &mut Vec<u32>) -> bool {
         shuffle(boxes);
     }
     let p: u32 = boxes.len() as u32;
+    let max_attempts = p / 2 -1;
     for n in 0..p {
         let mut b = boxes[n as usize];
         let mut attempts = 0;
-        while attempts < (p / 2 - 1) && b != n {
+        while b != n && attempts < max_attempts {
             b = boxes[b as usize];
             attempts += 1;
         }

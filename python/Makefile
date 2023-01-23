@@ -1,3 +1,6 @@
-all:
+build:
 	python3 ./setup.py develop
-	time -v python3 ./run.py 1000 --accel
+
+run:
+	time -v python3 ./run.py 3000 --accel
+	time -v python3 ./run.py 3000

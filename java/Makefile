@@ -1,4 +1,6 @@
-run:
+build:
 	javac -Werror PrisonersRiddle.java
-	time -v java PrisonersRiddle 1000
-	time -v java PrisonersRiddle 1000 --vector
+
+run:
+	time -v java PrisonersRiddle 3000
+	time -v java PrisonersRiddle 3000 --vector

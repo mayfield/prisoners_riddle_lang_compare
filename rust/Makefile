@@ -1,3 +1,5 @@
-all:
+build:
 	cargo build -r
-	time -v ./target/release/prisoners_riddle 1000
+
+run:
+	time -v ./target/release/prisoners_riddle 3000

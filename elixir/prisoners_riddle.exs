@@ -33,4 +33,4 @@ defmodule PrisonPuzzle do
   end
 end
 
-PrisonPuzzle.perf(10000, 1000)
+PrisonPuzzle.perf(10000, 3000)

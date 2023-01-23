@@ -5,28 +5,23 @@
 #include <string.h>
 
 
-int _rand_init = 0;
-void shuffle(int* arr, int len) {
-    if (_rand_init == 0) {
-        srand((unsigned int) time(NULL));
-        _rand_init = 1;
-    }
-    for (int i = 0; i < len; i++) {
-        int to = rand() % len;
-        int a = arr[to];
-        int b = arr[i];
+void shuffle(size_t* arr, size_t len) {
+    for (size_t i = 0; i < len; i++) {
+        size_t to = rand() % len;
+        size_t a = arr[to];
+        size_t b = arr[i];
         arr[i] = a;
         arr[to] = b;
     }
 }
 
 
-int run(int* boxes, int len) {
+int run(size_t* boxes, size_t len, size_t max_attempts) {
     shuffle(boxes, len);
-    for (int n = 0; n < len; n++) {
-        int b = boxes[n];
+    for (size_t n = 0; n < len; n++) {
+        size_t b = boxes[n];
         int attempts = 0;
-        while (b != n && attempts < len / 2 - 1) {
+        while (b != n && attempts < max_attempts) {
             b = boxes[b];
             attempts += 1;
         }
@@ -50,16 +45,18 @@ int main(int argc, char** argv) {
     }
     int live_sum = 0;
     int iters = 0;
-    int* boxes = (int*) malloc(sizeof(int) * p);
-    for (int i = 0; i < p; i++) {
+    size_t* boxes = (size_t*) malloc(sizeof(size_t) * p);
+    for (size_t i = 0; i < p; i++) {
         boxes[i] = i;
     }
     if (!boxes) {
         fprintf(stderr, "MEM BORK: %s\n", strerror(errno));
         return -1;
     }
+    srand((unsigned int) time(NULL));
+    size_t max_attempts = p / 2 - 1;
     for (int i = 0; i < 10000; i++) {
-        int live = run(boxes, p);
+        int live = run(boxes, p, max_attempts);
         live_sum += live;
         iters += 1;
         if (!(iters % 1000)) {

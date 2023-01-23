@@ -15,5 +15,5 @@ performance
 | C                | 1.15  | 1584   |
 
 
-<img src="timechart.png" width="600"/>
-<img src="memchart.png" width="600"/>
+<img src="timechart.png"/>
+<img src="memchart.png"/>
